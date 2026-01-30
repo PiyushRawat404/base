@@ -7,8 +7,7 @@ const express_1 = __importDefault(require("express"));
 const mongoose_1 = __importDefault(require("mongoose"));
 const user_routes_1 = __importDefault(require("./routes/user.routes"));
 const axios_1 = __importDefault(require("axios"));
-const redis_1 = __importDefault(require("redis"));
-const redisClient = redis_1.default.createClient();
+const client_js_1 = __importDefault(require("./client.js"));
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -20,7 +19,12 @@ mongoose_1.default.connect("mongodb://localhost:27017/healthcheckup")
 });
 app.use("/", user_routes_1.default);
 app.get("/api/todos", async (req, res) => {
+    const cacheValue = await client_js_1.default.get("todos");
+    if (cacheValue)
+        return res.json(cacheValue);
     const { data } = await axios_1.default.get("https://jsonplaceholder.typicode.com/todos");
+    await client_js_1.default.set("todos", data);
+    await client_js_1.default.expire("todos", 60);
     return res.json(data);
 });
 app.get("/api/v1", (req, res) => {

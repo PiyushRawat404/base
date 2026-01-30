@@ -2,9 +2,8 @@ import express, { Request, Response } from "express";
 import mongoose from 'mongoose';
 import userRoutes from "./routes/user.routes"
 import axios from "axios"
-import redis from "redis"
+import client from "./client.js"
 
-// const redisClient =redis.createClient();
 const app=express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +18,12 @@ mongoose.connect("mongodb://localhost:27017/healthcheckup")
 app.use("/",userRoutes)
 
 app.get("/api/todos",async(req:Request,res:Response)=>{
+
+  const cacheValue =await client.get("todos")
+  if(cacheValue) return res.json(cacheValue)
   const {data}=await axios.get("https://jsonplaceholder.typicode.com/todos")
+  await client.set("todos",data)
+  await client.expire("todos",60)
   return res.json(data);
 })
 
