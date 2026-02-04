@@ -1,5 +1,7 @@
 import {Request ,Response} from "express"
 import { User } from "../model/user"
+import client from "../db/postgresql"
+
 
 const getUser=async(req:Request,res:Response)=>{
     const name=req.params.name;
@@ -33,6 +35,11 @@ const newUser=async(req:Request,res:Response)=>{
   }
 };
 
+const sqlUser=async(req:Request,res:Response)=>{
+  const result =await client.query("Select * from public.patient")
+  // res.send(result.rows)
+  // res.json("hello")
+  console.log("hello")
+}
 
-
-export {getUser,newUser}
+export {getUser,newUser,sqlUser}

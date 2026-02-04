@@ -1,16 +1,16 @@
 import {Request ,Response} from "express"
-import client from "../client"
+import {connectRedis as cR} from "../db/redis"
 import axios from "axios"
 
 
 const handleFakeaApi =async(req:Request,res:Response)=>{
 
   try{
-    const cacheValue =await client.get("todos")
+    const cacheValue =await cR.get("todos")
   if(cacheValue) return res.json(JSON.parse(cacheValue))
   const {data}=await axios.get("https://jsonplaceholder.typicode.com/todos")
-  await client.set("todos",JSON.stringify(data))
-  await client.expire("todos",60)
+  await cR.set("todos",JSON.stringify(data))
+  await cR.expire("todos",60)
   return res.json(data);
 }catch (error) {
     console.error(error)
