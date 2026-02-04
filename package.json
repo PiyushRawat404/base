@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/app.ts",
     "build": "tsc",
-    "start": "node dist/app.js",
+    "start": "nodemon src/script.ts",
     "lint": "eslint src"
   },
   "devDependencies": {
@@ -28,8 +28,13 @@
     "typescript-eslint": "^8.54.0"
   },
   "dependencies": {
+    "@prisma/adapter-pg": "^7.3.0",
+    "@prisma/client": "^6.19.2",
+    "@types/pg": "^8.16.0",
     "axios": "^1.13.4",
     "dotenv": "^17.2.3",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "pg": "^8.18.0",
+    "prisma": "^6.19.2"
   }
 }
