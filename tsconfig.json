@@ -10,8 +10,9 @@
     "module": "nodenext",
     "target": "esnext",
     "types": [""],
+    "esModuleInterop": true,    //prisma
     // For nodejs:
-    // "lib": ["esnext"],
+    "lib": ["esnext"],
     // "types": ["node"],
     // and npm install -D @types/node
 
