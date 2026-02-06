@@ -14,4 +14,5 @@ model patients {
   phoneno  Int     @unique @default(autoincrement())
   gender   String? @db.VarChar(10)
   problem  String? @db.VarChar(50)
+  age     Int   @db.Integer
 }

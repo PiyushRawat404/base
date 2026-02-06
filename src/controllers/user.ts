@@ -1,7 +1,7 @@
 import {Request ,Response} from "express"
 import { User } from "../model/user"
 import client from "../db/postgresql"
-
+import { prisma } from '../lib/prisma'
 
 const getUser=async(req:Request,res:Response)=>{
     const name=req.params.name;
@@ -12,18 +12,20 @@ const getUser=async(req:Request,res:Response)=>{
 
 const newUser=async(req:Request,res:Response)=>{
     try {
-    const { name, num, gender, problem } = req.body;
+    const { fullname, phoneno, gender,age, problem } = req.body;
 
-    if (!name || !num || !gender || !problem) {
+    if (!fullname || !phoneno || !gender || !problem || !age) {
       return res.status(400).json({ msg: "All fields are required" });
     }
     
-   const user=await User.create({
-        clientNo:Date.now(),
-        fullName:name,
-        phoneNo:num,
-        gender:gender,
-        problem:problem
+   const user=await prisma.patients.create({
+    data:{
+      fullname,
+      phoneno,
+      gender,
+      age,
+      problem,     
+    } 
     })
      return res.status(201).json({
       msg: "User created successfully",
@@ -36,7 +38,7 @@ const newUser=async(req:Request,res:Response)=>{
 };
 
 const sqlUser=async(req:Request,res:Response)=>{
-  const result =await client.query("Select * from public.patient")
+  // const result =await prisma.patients.findFirst({fullname:"pkfi"})
   // res.send(result.rows)
   // res.json("hello")
   console.log("hello")
