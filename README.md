@@ -13,9 +13,11 @@ youtube:- piyush garg
 https://medium.com/@erickzanetti/redis-and-node-js-with-typescript-a-complete-guide-2bac6e300497
 
 linting-->
-installation
+installation. 
 https://eslint.org/
 
-implementation
-youtube:-The common coder
+prisma-->
+original doc 
+https://www.prisma.io/docs/postgres.  
 
+error handleing 
