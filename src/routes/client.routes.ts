@@ -1,5 +1,5 @@
 import {Router} from "express"
-import { handleFakeaApi } from "../controllers/client.routes"
+import { handleFakeaApi } from "../controllers/client.controllers"
 const router=Router()
 
 router.get("/todos",handleFakeaApi)

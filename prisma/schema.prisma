@@ -16,3 +16,23 @@ model patients {
   problem  String? @db.VarChar(50)
   age     Int   @db.Integer
 }
+
+
+enum branch{
+  GYANE
+  ORTHO
+  ENT
+  DENTIST
+  NEURO
+}
+enum timing{
+  MORNING
+  EVENING
+  NIGHT
+}
+model doctor{
+  id   Int   @id @default(autoincrement())
+  name  String    
+  specialist  branch 
+  shift timing 
+}
