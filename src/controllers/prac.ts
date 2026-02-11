@@ -1,9 +1,11 @@
 import {Request ,Response} from "express"
 import { User } from "../model/user"
-import client from "../db/postgresql"
+// import client from "../db/postgresql"
 import { prisma } from '../lib/prisma'
-import { error } from "node:console"
-import { asyncHandler } from "../utility/asyncHandler"
+import { asyncHandler } from "../services/asyncHandler"
+
+
+
 const getUser=async(req:Request,res:Response)=>{
     const name=req.params.name;
     await User.find({name})
@@ -12,12 +14,7 @@ const getUser=async(req:Request,res:Response)=>{
 }
 
 const newUser=async(req:Request,res:Response)=>{
-    try {
-    const { fullname, phoneno, gender,age, problem } = req.body;
-
-    if (!fullname || !phoneno || !gender || !problem || !age) {
-      return res.status(400).json({ msg: "All fields are required" });
-    }
+    const { fullname, phoneno, gender,age, problem,email,password } = req.body;
     
    const user=await prisma.patients.create({
     data:{
@@ -25,24 +22,24 @@ const newUser=async(req:Request,res:Response)=>{
       phoneno,
       gender,
       age,
-      problem,     
+      problem,   
+      email,
+      password,
+
     } 
     })
      return res.status(201).json({
       msg: "User created successfully",
       user,
     });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ msg: "Server error" });
   }
-};
-
 const sqlUser=async(req:Request,res:Response)=>{
-  // const result =await prisma.patients.findFirst({fullname:"pkfi"})
-  // res.send(result.rows)
-  // res.json("hello")
-  console.log("hello")
+  const result:unknown =await prisma.patients.findFirst({
+    where:{
+      fullname:"dl"
+    }
+  })
+  res.json("hello"+result)
 }
 
 
@@ -64,6 +61,8 @@ const handlePostUser=async(req:Request,res:Response)=>{
       name :team.name,
       specialist :team.specialist,
       shift :team.shift,
+      email :team.email,
+      password :team.password
      } 
     })
     

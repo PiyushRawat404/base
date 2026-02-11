@@ -1,6 +1,5 @@
 import {Router} from "express"
-import { getUser,handlegetuser,handlePostUser,newUser,sqlUser } from "../controllers/user"
-import { handleFakeaApi } from "../controllers/client.controllers"
+import { getUser,handlegetuser,handlePostUser,newUser,sqlUser } from "../controllers/prac"
 const router=Router()
 
 router.get("/name",getUser)

@@ -9,14 +9,15 @@ datasource db {
 }
 
 model patients {
-  clientno Int     @id @default(autoincrement())
-  fullname String  @db.VarChar(20)
-  phoneno  Int     @unique @default(autoincrement())
-  gender   String? @db.VarChar(10)
-  problem  String? @db.VarChar(50)
-  age     Int   @db.Integer
+  clientno    Int            @id @default(autoincrement())
+  fullname    String         @db.VarChar(20)
+  phoneno     Int?           @unique 
+  gender      String?        @db.VarChar(10)
+  problem     String?        @db.VarChar(50)
+  age         Int?           @db.Integer
+  email       String         @unique
+  password    String         @unique
 }
-
 
 enum branch{
   GYANE
@@ -31,8 +32,10 @@ enum timing{
   NIGHT
 }
 model doctor{
-  id   Int   @id @default(autoincrement())
-  name  String    
-  specialist  branch 
-  shift timing 
+  id            Int         @id @default(autoincrement())
+  name          String    
+  specialist    branch 
+  shift         timing 
+  email         String      @unique
+  password      String      @unique
 }

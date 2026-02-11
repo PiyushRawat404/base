@@ -1,5 +1,5 @@
-import { Request, Response  } from "express"
+// import { Request, Response  } from "express"
 
-export const bridge =(req:Request, res:Response, next:Function) => {
-    next()
-}
+// export const bridge =(req:Request, res:Response, next:Function) => {
+//     next()
+// }

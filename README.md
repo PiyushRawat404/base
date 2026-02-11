@@ -20,4 +20,5 @@ prisma-->
 original doc 
 https://www.prisma.io/docs/postgres.  
 
-error handleing 
+error handling -->
+try catch throw finally

@@ -8,8 +8,6 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon --exec ts-node src/app.ts",
-    "build": "tsc",
-    "start": "nodemon src/script.ts",
     "lint": "eslint src"
   },
   "devDependencies": {
