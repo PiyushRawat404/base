@@ -1,9 +1,6 @@
 # Practice Project
 
-This repository is created for practicing Git workflows and basic project management.
-
-The project also includes a **simple React application created using Vite**.  
-It contains a basic counter example that demonstrates how a React app works.
+This repository is created for practicing assignment and revise concepts.
 
 ---
 
@@ -33,21 +30,35 @@ It contains a basic counter example that demonstrates how a React app works.
 
 </details>
 
+<details>
+<summary><strong>Day 2</strong></summary>
+
+### HTML CSS JS TASKS
+
+- Make a Task Manager Application.
+- Add functionality to add and remove tasks.
+- Strikethrough the tasks that are completed.
+
+
+
+
+</details>
+
 ---
 
 ## Tech Used
 
-- React
-- Vite
 - Git
 - GitLab
-
+- HTML
+- CSS
+- JS
 ---
 
 ## Notes
 
 This project is part of a learning exercise to understand:
 
-- Git branching workflow
+- Different technology basics
 - Repository management
-- Basic React setup using Vite
+- Web Development
