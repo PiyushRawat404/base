@@ -33,14 +33,26 @@ This repository is created for practicing assignment and revise concepts.
 <details>
 <summary><strong>Day 2</strong></summary>
 
-### HTML CSS JS TASKS
+### HTML CSS JS Tasks
 
-- Make a Task Manager Application.
-- Add functionality to add and remove tasks.
-- Strikethrough the tasks that are completed.
+- Make a Task Manager Application
+- Add functionality to add tasks
+- Add functionality to remove tasks
+- Strikethrough the tasks that are completed
 
+</details>
 
+<details>
+<summary><strong>Day 3</strong></summary>
 
+### Node.js Backend Integration
+
+- Convert the Task Manager to use Node.js and Express
+- Create API routes for tasks
+- Store tasks in a JSON file instead of local storage
+- Connect frontend with backend using `fetch`
+- Add functionality to create, update and delete tasks using API
+- Show uncompleted tasks on top and completed tasks at bottom
 
 </details>
 
@@ -53,6 +65,9 @@ This repository is created for practicing assignment and revise concepts.
 - HTML
 - CSS
 - JS
+- Node.js
+- Express.js
+
 ---
 
 ## Notes
