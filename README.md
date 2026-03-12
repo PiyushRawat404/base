@@ -77,3 +77,4 @@ This project is part of a learning exercise to understand:
 - Different technology basics
 - Repository management
 - Web Development
+- Integration of front end and backend
