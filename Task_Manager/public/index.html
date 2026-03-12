@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Task Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<main>
+
+    <h2>Task Tracker</h2>
+
+    <div class="input-container">
+        <input 
+        class="task-input"
+        name="input-text"
+        id="input-box"
+        type="text"
+        placeholder="Start writing and press enter to create task">
+
+        <button id="input-button" onclick="addTask()">↵</button>
+    </div>
+
+    <section class="createdTasks">
+        <ul id="list-container"></ul>
+        <hr>
+        <div class="counter-container">
+            <div id="task-counter">
+                Completed : <span id="completed-counter">0</span> |
+                Uncompleted : <span id="uncompleted-counter">0</span>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="index.js" defer></script>
+
+</body>
+</html>
