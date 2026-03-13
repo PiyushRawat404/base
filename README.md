@@ -7,6 +7,11 @@ This repository is created for practicing assignment and revise concepts.
 ## Progress
 
 <details>
+<summary><strong>Week 1</strong></summary>
+
+<br>
+
+<details>
 <summary><strong>Day 1</strong></summary>
 
 ### Git Tasks
@@ -56,6 +61,25 @@ This repository is created for practicing assignment and revise concepts.
 
 </details>
 
+<details>
+<summary><strong>Day 4</strong></summary>
+
+### Docker Integration
+
+- Install Docker and understand containerization concepts
+- Create a `Dockerfile` for the Task Manager application
+- Build a Docker image for the application
+- Run the application inside a Docker container
+- Map container ports to host ports
+- Mount a volume to persist JSON file data
+- Understand Docker commands such as `docker build`, `docker run`, `docker ps`, `docker stop`
+- Learn the difference between **Docker Image** and **Docker Container**
+- Ensure the application runs inside Docker with persistent data storage
+
+</details>
+
+</details>
+
 ---
 
 ## Tech Used
@@ -64,9 +88,10 @@ This repository is created for practicing assignment and revise concepts.
 - GitLab
 - HTML
 - CSS
-- JS
+- JavaScript
 - Node.js
 - Express.js
+- Docker
 
 ---
 
@@ -78,3 +103,4 @@ This project is part of a learning exercise to understand:
 - Repository management
 - Web Development
 - Integration of front end and backend
+- Containerization using Docker
