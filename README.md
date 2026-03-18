@@ -115,6 +115,21 @@ This repository is created for practicing assignment and revise concepts.
 - Tested the API endpoints locally to verify the functionality of the GET and POST operations.
 
 </details>
+<details>
+<summary><strong>Day 3</strong></summary>
+
+### Go Backend with Database and Framework Integration
+
+- Integrated PostgreSQL database with the Go application using GORM ORM for persistent data storage.
+- Configured database connection and performed auto-migration for the Task model.
+- Implemented full CRUD APIs (Create, Read, Update, Delete) for task management.
+- Switched from the default `net/http` package to the Gin framework for better routing and cleaner code structure.
+- Created API endpoints for GET, POST, PUT, and DELETE operations using Gin.
+- Handled JSON request/response using Gin context methods.
+- Tested all API endpoints using Postman to ensure correct functionality.
+- Understood how ID auto-generation works in PostgreSQL using sequences.
+
+</details>
 
 </details>
 

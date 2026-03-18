@@ -2,7 +2,11 @@ package main
 
 import (
 	"fmt"
-	"net/http"
+
+	"github.com/gin-gonic/gin"
+
+	"task_go/config"
+	"task_go/models"
 	"task_go/routes"
 )
 
@@ -10,7 +14,11 @@ func main() {
 
 	fmt.Println("Server running on port 4000")
 
-	routes.RegisterRoutes()
+	config.ConnectDB()
+	config.DB.AutoMigrate(&models.Task{})
 
-	http.ListenAndServe(":4000", nil)
+	r := gin.Default()
+
+	routes.RegisterRoutes(r)
+	r.Run(":4000")
 }

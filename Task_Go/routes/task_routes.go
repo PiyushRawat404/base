@@ -1,21 +1,16 @@
 package routes
 
 import (
-	"net/http"
 	"task_go/handlers"
+
+	"github.com/gin-gonic/gin"
 )
 
-func RegisterRoutes() {
+func RegisterRoutes(r *gin.Engine) {
 
-	http.HandleFunc("/tasks", func(w http.ResponseWriter, r *http.Request) {
+	r.GET("/tasks", handlers.GetTasksHandler)
+	r.POST("/tasks", handlers.CreateTaskHandler)
+	r.PUT("/tasks/:id", handlers.UpdateTaskHandler)
+	r.DELETE("/tasks/:id", handlers.DeleteTaskHandler)
 
-		if r.Method == "GET" {
-			handlers.GetTasksHandler(w, r)
-		}
-
-		if r.Method == "POST" {
-			handlers.CreateTaskHandler(w, r)
-		}
-
-	})
 }
