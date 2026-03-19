@@ -1,24 +1,27 @@
 package main
 
 import (
-	"fmt"
-
-	"github.com/gin-gonic/gin"
-
 	"task_go/config"
 	"task_go/models"
 	"task_go/routes"
+	"task_go/utils"
+
+	"github.com/gofiber/fiber/v2"
 )
 
 func main() {
 
-	fmt.Println("Server running on port 4000")
-
+	config.LoadConfig()
+	utils.InitLogger()
 	config.ConnectDB()
-	config.DB.AutoMigrate(&models.Task{})
 
-	r := gin.Default()
+	config.DB.AutoMigrate(&models.Task{}, &models.User{})
 
-	routes.RegisterRoutes(r)
-	r.Run(":4000")
+	app := fiber.New()
+
+	routes.RegisterRoutes(app)
+
+	utils.Logger.Info().Msg("Server running on port 4000")
+
+	app.Listen(":4000")
 }

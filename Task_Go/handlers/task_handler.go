@@ -1,55 +1,43 @@
 package handlers
 
 import (
-	"net/http"
 	"task_go/config"
 	"task_go/models"
-
-	"github.com/gin-gonic/gin"
+	"github.com/gofiber/fiber/v2"
 )
 
-func CreateTaskHandler(c *gin.Context) {
+func CreateTaskHandler(c *fiber.Ctx) error {
 	var task models.Task
-	if c.ShouldBindJSON(&task) != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
-		return
-	}
+	c.BodyParser(&task)
 	config.DB.Create(&task)
-	c.JSON(http.StatusCreated, task)
+	return c.JSON(task)
 }
 
-func GetTasksHandler(c *gin.Context) {
+func GetTasksHandler(c *fiber.Ctx) error {
 	var tasks []models.Task
 	config.DB.Find(&tasks)
-	c.JSON(http.StatusOK, tasks)
+	return c.JSON(tasks)
 }
 
-func UpdateTaskHandler(c *gin.Context) {
-	id := c.Param("id")
+func UpdateTaskHandler(c *fiber.Ctx) error {
+	id := c.Params("id")
 	var task models.Task
-	if config.DB.First(&task, id).Error != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
-		return
-	}
+	config.DB.First(&task, id)
 	var input models.Task
-	if c.ShouldBindJSON(&input) != nil {
-		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid input"})
-		return
-	}
+	c.BodyParser(&input)
 	task.Title = input.Title
 	task.Completed = input.Completed
 	config.DB.Save(&task)
-	c.JSON(http.StatusOK, task)
+
+	return c.JSON(task)
 }
 
-func DeleteTaskHandler(c *gin.Context) {
-	id := c.Param("id")
+func DeleteTaskHandler(c *fiber.Ctx) error {
+	id := c.Params("id")
 	var task models.Task
-
-	if config.DB.First(&task, id).Error != nil {
-		c.JSON(http.StatusNotFound, gin.H{"error": "Task not found"})
-		return
-	}
+	config.DB.First(&task, id)
 	config.DB.Delete(&task)
-	c.JSON(http.StatusOK, gin.H{"message": "Task deleted"})
+	return c.JSON(fiber.Map{
+		"message": "Deleted",
+	})
 }

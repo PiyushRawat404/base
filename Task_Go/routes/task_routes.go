@@ -2,15 +2,14 @@ package routes
 
 import (
 	"task_go/handlers"
-
-	"github.com/gin-gonic/gin"
+	"task_go/middleware"
+	"github.com/gofiber/fiber/v2"
 )
-
-func RegisterRoutes(r *gin.Engine) {
-
-	r.GET("/tasks", handlers.GetTasksHandler)
-	r.POST("/tasks", handlers.CreateTaskHandler)
-	r.PUT("/tasks/:id", handlers.UpdateTaskHandler)
-	r.DELETE("/tasks/:id", handlers.DeleteTaskHandler)
-
+func RegisterRoutes(app *fiber.App) {
+	app.Post("/register", handlers.RegisterUser)
+	app.Post("/login", handlers.LoginUser)
+	app.Get("/tasks", middleware.AuthMiddleware, handlers.GetTasksHandler)
+	app.Post("/tasks", middleware.AuthMiddleware, handlers.CreateTaskHandler)
+	app.Put("/tasks/:id", middleware.AuthMiddleware, handlers.UpdateTaskHandler)
+	app.Delete("/tasks/:id", middleware.AuthMiddleware, handlers.DeleteTaskHandler)
 }

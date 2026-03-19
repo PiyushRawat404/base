@@ -130,6 +130,22 @@ This repository is created for practicing assignment and revise concepts.
 - Understood how ID auto-generation works in PostgreSQL using sequences.
 
 </details>
+<details>
+<summary><strong>Day 4</strong></summary>
+
+### Authentication, Middleware and Framework Upgrade
+
+- Replaced Gin framework with Fiber for simpler and faster API handling
+- Implemented JWT-based authentication system for user login and protected routes
+- Created authentication APIs for user registration and login
+- Generated JWT tokens and used them to authorize API requests
+- Added middleware to protect task routes using JWT verification
+- Integrated Zerolog for structured logging of API requests and responses
+- Configured environment variables using `.env` file for DB and JWT secrets
+- Tested authentication flow and protected APIs using Postman
+- Understood complete request flow including middleware, handlers, and database interaction
+
+</details>
 
 </details>
 
@@ -153,7 +169,7 @@ This repository is created for practicing assignment and revise concepts.
 
 This project is part of a learning exercise to understand:
 
-- Different technology basics
+
 - Repository management
 - Web Development
 - Integration of front end and backend
