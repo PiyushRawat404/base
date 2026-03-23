@@ -82,7 +82,6 @@ This repository is created for practicing assignment and revise concepts.
 
 </details>
 
----
 
 <details>
 <summary><strong>Week 2</strong></summary>
@@ -144,6 +143,29 @@ This repository is created for practicing assignment and revise concepts.
 - Configured environment variables using `.env` file for DB and JWT secrets
 - Tested authentication flow and protected APIs using Postman
 - Understood complete request flow including middleware, handlers, and database interaction
+
+</details>
+
+</details>
+<details>
+<summary><strong>Week 3</strong></summary>
+
+<br>
+
+<details>
+<summary><strong>Day 1</strong></summary>
+
+### Go Concurrency (Goroutines & Channels) Implementation
+
+- Learned the concept of Goroutines and how Go handles concurrent execution using lightweight threads.
+- Understood how channels are used for communication between goroutines and how they help in synchronizing concurrent processes.
+- Implemented a background worker system using **goroutines and channels** in the Task Manager application.
+- Created a buffered channel to queue tasks and process them asynchronously without blocking API responses.
+- Developed a worker function that continuously listens to the channel and processes tasks in the background.
+- Integrated goroutines in API handlers (Create, Update, Delete) to send tasks to the worker queue for async processing.
+- Verified asynchronous behavior by testing APIs in Postman and observing non-blocking responses along with delayed background logs.
+- Simulated real-world use cases such as logging, background processing, and task handling using concurrency.
+- Gained understanding of how concurrency improves performance and scalability in backend applications.
 
 </details>
 
