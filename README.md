@@ -168,6 +168,33 @@ This repository is created for practicing assignment and revise concepts.
 - Gained understanding of how concurrency improves performance and scalability in backend applications.
 
 </details>
+<details>
+<summary><strong>Day 2</strong></summary>
+
+### HRMS Onboarding Module (Profile & Education CRUD)
+
+- Implemented onboarding module structure in Go using **handlers, services, and repository layers**.
+- Designed and implemented **Profile Management APIs**:
+  - Created API to update primary profile details such as first name, last name, date of birth, gender, and blood group.
+
+
+- Developed **Education CRUD APIs**:
+  - **POST /onboarding/education** to add new education records.
+  - **GET /onboarding/profile** to fetch complete employee profile including education details.
+  - **PUT /onboarding/education/:id** to update existing education entries.
+  - **DELETE /onboarding/education/:id** to remove education records.
+
+- Integrated **PostgreSQL with pgx** for efficient query execution.
+- Structured database tables for:
+  - `employees` (profile data)
+  - `employee_education` (education records linked via employee_id)
+
+- Tested APIs using **Postman**:
+  - Verified complete CRUD functionality
+  - Ensured proper validation and error responses
+  - Checked data consistency across operations
+
+</details>
 
 </details>
 
