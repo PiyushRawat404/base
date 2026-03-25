@@ -195,6 +195,28 @@ This repository is created for practicing assignment and revise concepts.
   - Checked data consistency across operations
 
 </details>
+<details>
+<summary><strong>Day 3</strong></summary>
+
+### React Styling with Styled-Components
+
+- Set up a new React application using `npx create-react-app`
+- Installed and configured `styled-components` for component-level styling
+- Understood the concept of **CSS-in-JS** and how styles can be scoped to components
+- Created reusable styled components using `styled.p`
+- Implemented dynamic styling using props to control:
+  - Text color
+  - Font weight (bold)
+  - Font style (italic)
+  - Text decoration (underline)
+- Learned the importance of using `$` prefix (e.g., `$bold`, `$italic`) in styled-components v6 to prevent props from being passed to the DOM
+- Debugged common React issues such as:
+  - Invalid hook call error due to multiple React versions
+  - Dependency conflicts and how to resolve them
+- Successfully rendered multiple styled text components with different styles using a single reusable component
+- Gained understanding of how styled-components improves code reusability and maintainability in React applications
+
+</details>
 
 </details>
 
