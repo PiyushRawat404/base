@@ -217,6 +217,33 @@ This repository is created for practicing assignment and revise concepts.
 - Gained understanding of how styled-components improves code reusability and maintainability in React applications
 
 </details>
+<details>
+<summary><strong>Day 4</strong></summary>
+### React + Redux Toolkit (Shopping App)
+
+- Learned the fundamentals of Redux Toolkit for state management  
+- Understood core concepts: store, slice, reducers, and actions  
+- Set up Redux in a TypeScript React application  
+
+### Project Implementation
+
+- Created a proper folder structure:
+  - components
+  - pages
+  - views
+  - store
+  - features
+  - styles
+  - lib
+
+- Built a simple Shopping App:
+  - Displayed a list of products  
+  - Implemented Add to Cart functionality  
+
+- Implemented Remove from Cart feature  
+
+
+</details>
 
 </details>
 
