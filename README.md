@@ -219,6 +219,7 @@ This repository is created for practicing assignment and revise concepts.
 </details>
 <details>
 <summary><strong>Day 4</strong></summary>
+
 ### React + Redux Toolkit (Shopping App)
 
 - Learned the fundamentals of Redux Toolkit for state management  
@@ -239,9 +240,124 @@ This repository is created for practicing assignment and revise concepts.
 - Built a simple Shopping App:
   - Displayed a list of products  
   - Implemented Add to Cart functionality  
+  - Implemented Remove from Cart feature  
 
-- Implemented Remove from Cart feature  
 
+</details>
+<details>
+<summary><strong>Day 5</strong></summary>
+
+### React + Redux Toolkit (Shopping App with Persistence)
+
+- Built a simple Shopping Application with product listing functionality.
+- Implemented Add to Cart feature using Redux Toolkit for state management.
+- Integrated localStorage to persist cart data across page reloads.
+- Learned the fundamentals of Redux Toolkit including store, slice, reducers, and actions.
+- Understood how global state management works in React using Redux.
+- Explored how to persist application state using localStorage.
+- Gained understanding of Redux data flow (Component → Dispatch → Reducer → Store → UI).
+- Learnt about Redux Dev Tool.
+
+
+
+</details>
+
+
+
+</details>
+<details>
+<summary><strong>Week 4</strong></summary>
+
+<br>
+
+<details>
+<summary><strong>Day 1</strong></summary>
+
+### React Advanced Concepts (Routing, Data Fetching & Performance)
+
+- Learned about public and private routes in React and how to restrict access to authenticated users.
+- Explored React Query and its use cases for efficient data fetching and state synchronization.
+- Studied Axios for API calls and understood concepts like cache time and stale time.
+- Learned about implementing skeletal loaders in React for better user experience during data loading.
+- Understood the difference between Client-Side Rendering (CSR) and Server-Side Rendering (SSR).
+- Explored the advantages of Axios over Fetch API in terms of features and ease of use.
+
+</details>
+<details>
+<summary><strong>Day 2</strong></summary>
+
+### TypeScript & Performance Optimization
+
+- Learned core TypeScript concepts including types, interfaces, and generics.
+- Explored various code optimization techniques to improve application performance.
+- Studied concepts like lazy loading, code splitting, Suspense, defer, and async.
+- Understood preloading and prefetching strategies for better resource management.
+- Learned about React.memo for component optimization.
+- Understood the difference between useCallback and useMemo hooks.
+- Explored JavaScript concepts such as currying and the usage of apply, call, and bind methods.
+- Implemented a structured front-end folder architecture in the HRMS project.
+
+</details>
+<details>
+<summary><strong>Day 3</strong></summary>
+
+### DevOps Fundamentals & SDLC
+
+- Learned the fundamentals of DevOps, including its history, importance, and role in modern software development.
+- Explored Docker and various tools commonly used in DevOps practices.
+- Studied the Software Development Life Cycle (SDLC) from a DevOps perspective.
+- Reviewed version control and collaboration platforms such as GitHub and GitLab.
+- Learned about major cloud platforms including AWS, GCP, and Microsoft Azure.
+- Understood the difference between Continuous Integration (CI) and Continuous Delivery/Deployment (CD).
+- Gained insights into the importance of DevOps in improving the development lifecycle.
+
+</details>
+<details>
+<summary><strong>Day 4</strong></summary>
+
+### Docker, Git & Virtualization Concepts
+
+- Learned Docker fundamentals including images and Docker Compose.
+- Explored the concept of pre-written hooks in development workflows.
+- Practiced basic Git commands for version control.
+- Studied the concept of virtual machines and their usage.
+- Understood the difference between virtualization and containerization.
+- Explored the use of pre-commit hooks along with their limitations.
+- Gained understanding of Docker components such as images and the Docker daemon.
+
+</details>
+<details>
+<summary><strong>Day 5</strong></summary>
+
+### Networking, GitLab & Security Basics
+
+- Learned fundamental networking concepts and how systems communicate over networks.
+- Explored VPC, IP addressing, and subnet concepts.
+- Studied GitLab Runner and its role in CI/CD pipelines.
+- Learned about SSH and the usage of public and private keys for secure communication.
+- Understood the differences between GitHub and GitLab.
+- Learned about subnet masks and the distinction between static and dynamic IP addresses.
+
+</details>
+</details>
+
+<details>
+<summary><strong>Week 5</strong></summary>
+
+<br>
+
+<details>
+<summary><strong>Day 1</strong></summary>
+
+
+### CI/CD, Security & Infrastructure Concepts
+
+- Learned how CI/CD pipelines are written and structured in GitLab.
+- Explored security concerns in pipelines such as secret exposure and access control.
+- Studied Git submodules for managing shared SDKs across projects.
+- Studied Nginx and understood the concept of reverse proxy for handling client requests.
+- Explored the role of Vault in secure secret management.
+- Understood how reverse proxy improves performance, scalability, and security.
 
 </details>
 
@@ -256,6 +372,7 @@ This repository is created for practicing assignment and revise concepts.
 - HTML
 - CSS
 - JavaScript
+- React
 - Node.js
 - Express.js
 - Docker
@@ -268,8 +385,11 @@ This repository is created for practicing assignment and revise concepts.
 This project is part of a learning exercise to understand:
 
 
-- Repository management
-- Web Development
-- Integration of front end and backend
-- Containerization using Docker
-- Backend development using Go
+- Repository management and version control using Git, GitHub, and GitLab  
+- Frontend development using React, Redux Toolkit, and TypeScript  
+- Backend development using Node.js, Express, and Go  
+- Integration of frontend and backend through REST APIs  
+- State management and performance optimization techniques in React  
+- Containerization and environment setup using Docker  
+- DevOps fundamentals including CI/CD, GitLab Runner, and automation workflows  
+- Networking basics including IP addressing, VPC, and SSH  
