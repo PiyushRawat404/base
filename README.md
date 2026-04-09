@@ -360,7 +360,48 @@ This repository is created for practicing assignment and revise concepts.
 - Understood how reverse proxy improves performance, scalability, and security.
 
 </details>
+<details>
+<summary><strong>Day 2</strong></summary>
 
+### CI/CD Variables, Triggers & Pipeline Scripts
+
+- Learned about different types of variables in GitLab such as global variables and vault (secure) variables.  
+- Explored manual triggers in CI/CD pipelines and understood how to control when pipelines run.  
+- Studied job dependencies (`needs`) and how they help in running jobs in the correct order.  
+- Learned about before_script and after_script and how they are used in pipeline jobs.  
+- Understood security concerns related to variable usage and how sensitive data should be handled.  
+- Learned the importance of following best practices to keep the system and data secure.  
+
+</details>
+<details>
+<summary><strong>Day 3</strong></summary>
+
+### Software Testing Concepts & Practical Implementation
+
+- Learned about POC (Proof of Concept), Wireframe, and PRD and their role in project planning.  
+- Studied different types of testing such as functional testing (unit, regression, etc.).  
+- Learned about SDLC models like Waterfall and Agile.  
+- Understood concepts like test sheets, bug reports, severity, and priority.  
+- Created test cases for the onboarding section of the HRMS project.  
+- Gained understanding of bug reports and how severity and priority are decided.  
+- Tested the HRMS onboarding module based on the created test cases.  
+
+</details>
+<details>
+<summary><strong>Day 4</strong></summary>
+
+### Task Management, Testing & Agile Concepts
+- Learned how to use Planit for ticket creation and board management.  
+- Understood the complete Jira task flow from task creation to completion.  
+- Explored story points system and how it is used in Scrum for effort estimation.  
+- Learned about different environments (development, staging, production) and their usage.  
+- Studied how Root Cause Analysis (RCA) is done when code is not working properly.  
+- Learned about non-functional testing and its importance in performance and reliability.  
+- Explored database (DB) testing and API testing concepts.  
+- Gained understanding of Scrum methodology and how teams manage work in sprints.  
+- Learned about UAT (User Acceptance Testing) and mobile testing processes.  
+
+</details>
 </details>
 
 ---
