@@ -12,6 +12,9 @@ func intSeq() func() int {
 
 	}
 }
+	func add( num3 , num4 int ) int {
+		return num3 + num4
+	}
 func main() {
 	// var a, b int
 	// var op string
@@ -47,5 +50,10 @@ func main() {
 	fmt.Println(nextINTS())
 	fmt.Println(nextINTS())
 	fmt.Println(nextINTS())
+
+
+ r := add(2,7)
+ fmt.Println(r)
+
 
 }
