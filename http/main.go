@@ -1,5 +1,4 @@
-package http
-
+package main
 
 import (
 	"encoding/json"
@@ -14,9 +13,19 @@ type User struct {
 }
 
 
-func homeHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Welcome to  server")
+func loggingMiddleware(next http.HandlerFunc) http.HandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		fmt.Println("Request:", r.Method, r.URL.Path)
+
+		next(w, r)
+	}
 }
+
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "Welcome to server")
+}
+
 func getUser(w http.ResponseWriter, r *http.Request) {
 
 	user := User{
@@ -25,40 +34,23 @@ func getUser(w http.ResponseWriter, r *http.Request) {
 		Age:  22,
 	}
 
-	w.Header().Set("Content-Type", "application/json")
-
 	json.NewEncoder(w).Encode(user)
 }
-
 
 func createUser(w http.ResponseWriter, r *http.Request) {
 
 	var user User
 
-	err := json.NewDecoder(r.Body).Decode(&user)
+	json.NewDecoder(r.Body).Decode(&user)
 
-	if err != nil {
-		http.Error(w, "Invalid JSON", http.StatusBadRequest)
-		return
-	}
-
-
-	if user.Name == "" {
-		http.Error(w, "Name is required", http.StatusBadRequest)
-		return
-	}
-
-	fmt.Fprintf(w, "User created successfully: %s", user.Name)
+	fmt.Fprintf(w, "User created: %s", user.Name)
 }
 
 func main() {
 
-	http.HandleFunc("/", homeHandler)
-
-
-	http.HandleFunc("/user", getUser)
-
-	http.HandleFunc("/create-user", createUser)
+	http.HandleFunc("/", loggingMiddleware(homeHandler))
+	http.HandleFunc("/user", loggingMiddleware(getUser))
+	http.HandleFunc("/create-user", loggingMiddleware(createUser))
 
 	fmt.Println("Server running on port 8080")
 
