@@ -1,0 +1,8 @@
+CREATE TABLE IF NOT EXISTS blogs (
+    id SERIAL PRIMARY KEY,
+    title TEXT NOT NULL,
+    content TEXT NOT NULL,
+    author TEXT NOT NULL,
+    is_published BOOLEAN NOT NULL ,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
