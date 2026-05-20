@@ -9,6 +9,7 @@ import (
 	"blog/internal/service"
 	"context"
 	"net/http"
+	"fmt"
 )
 
 func main() {
@@ -22,5 +23,6 @@ func main() {
 	blogService := service.NewBlogService(blogRepo)
 	blogHandler := handler.NewBlogHandler(blogService)
 	routes.Routes(blogHandler)
+	fmt.Println("Server running on :8000")
 	http.ListenAndServe(":"+cfg.Port, nil)
 }

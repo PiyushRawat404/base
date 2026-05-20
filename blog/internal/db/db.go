@@ -3,6 +3,7 @@ package database
 import (
 	"context"
 	"fmt"
+	"os"
 
 	"blog/internal/config"
 
@@ -17,6 +18,18 @@ func LoadDB(cfg config.Config) (*pgx.Conn, error) {
 		dsn,
 	)
 	if err != nil {
+		return nil, err
+	}
+
+	schema, err := os.ReadFile("migrations/schema.up.sql")
+	if err != nil {
+		conn.Close(context.Background())
+		return nil, err
+	}
+
+	_, err = conn.Exec(context.Background(), string(schema))
+	if err != nil {
+		conn.Close(context.Background())
 		return nil, err
 	}
 
