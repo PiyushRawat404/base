@@ -1,8 +1,8 @@
 package main
 
 import (
-	"blog/internal/config"
-	"blog/internal/db"
+	"blog/pkg/config"
+	"blog/pkg/db"
 	"blog/internal/handler"
 	"blog/internal/repository"
 	"blog/internal/routes"

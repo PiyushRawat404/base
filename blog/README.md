@@ -8,29 +8,31 @@ This project implements basic CRUD operations for blogs using:
 - net/http
 - PostgreSQL
 - pgx
-- layered architecture
 
 ---
 
 # Project Structure
 
 ```text
-blog-backend/
+blog/
 ├── cmd/
-│   └── main.go
+│   └── server/
+│       └── main.go
 │
 ├── internal/
-│   ├── config/
-│   ├── database/
 │   ├── handler/
 │   ├── model/
 │   ├── repository/
 │   ├── routes/
 │   └── service/
 │
+├── pkg/
+│   ├── config/
+│   └── db/
+│
 ├── migrations/
-│   ├── 001_create_blogs_table.up.sql
-│   └── 001_create_blogs_table.down.sql
+│   ├── schema.up.sql
+│   └── schema.down.sql
 │
 ├── .env
 ├── go.mod
@@ -39,14 +41,6 @@ blog-backend/
 
 ---
 
-# Features
-
-- Create blog
-- Get all blogs
-- Update blog
-- Delete blog
-
----
 
 # Technologies Used
 
@@ -61,28 +55,29 @@ blog-backend/
 
 | Method | Endpoint | Description |
 |---|---|---|
-| POST | `/blogs/create` | Create blog |
+| POST | `/blog` | Create blog |
 | GET | `/blogs` | Get all blogs |
 | PUT | `/blogs/update?id=1` | Update blog |
 | DELETE | `/blogs/delete?id=1` | Delete blog |
 
 ---
 
-
-
 # Architecture
 
 This project follows layered architecture:
 
 ```text
+Routes Layer
+    ↓
 Handler Layer
     ↓
 Service Layer
     ↓
 Repository Layer
     ↓
+DB Layer
+    ↓
 PostgreSQL
 ```
 
 ---
-
