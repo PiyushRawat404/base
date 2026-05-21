@@ -12,10 +12,10 @@ import (
 
 func LoadDB(cfg config.Config) (*pgx.Conn, error) {
 
-	connStr := os.Getenv("POSTGRESDB")
+	dsn := "postgres://" + cfg.DBUser + ":" + cfg.DBPassword + "@" + cfg.DBHost + ":" + cfg.DBPort + "/" + cfg.DBName
 	conn, err := pgx.Connect(
 		context.Background(),
-		connStr,
+		dsn,
 	)
 	if err != nil {
 		return nil, err

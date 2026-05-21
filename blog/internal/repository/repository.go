@@ -77,6 +77,10 @@ func (r *BlogRepo) GetBlogs() ([]model.BlogPost, error) {
 		blogs = append(blogs, blog)
 	}
 
+	if err := rows.Err(); err != nil {
+		return nil, err
+	}
+
 	return blogs, nil
 }
 

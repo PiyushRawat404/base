@@ -1,7 +1,7 @@
 package config
 
 import (
-	"log"
+	"fmt"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -16,10 +16,10 @@ type Config struct {
 	DBPort     string
 }
 
-func LoadConfig() Config {
+func LoadConfig() (Config, error) {
 	err := godotenv.Load()
 	if err != nil {
-		log.Fatal("Error loading .env file")
+		return Config{}, fmt.Errorf("load .env file: %w", err)
 	}
 
 	cfg := Config{
@@ -30,5 +30,13 @@ func LoadConfig() Config {
 		DBHost:     os.Getenv("DB_HOST"),
 		DBPort:     os.Getenv("DB_PORT"),
 	}
-	return cfg
+
+	if cfg.Port == "" {
+		return Config{}, fmt.Errorf("missing PORT")
+	}
+	if cfg.DBUser == "" || cfg.DBName == "" || cfg.DBPassword == "" || cfg.DBHost == "" || cfg.DBPort == "" {
+		return Config{}, fmt.Errorf("missing required database configuration")
+	}
+
+	return cfg, nil
 }
