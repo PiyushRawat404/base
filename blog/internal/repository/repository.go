@@ -3,8 +3,10 @@ package repository
 import (
 	"blog/internal/model"
 	"context"
+	"errors"
 
 	"github.com/jackc/pgx/v5"
+	"github.com/jackc/pgx/v5/pgconn"
 )
 
 type BlogRepository interface {
@@ -14,12 +16,29 @@ type BlogRepository interface {
 	DeleteBlog(id int) error
 }
 
+type UserRepository interface {
+	CreateUser(user model.User) (model.User, error)
+	GetUserByEmail(email string) (model.User, error)
+}
+
+var ErrUserNotFound = errors.New("user not found")
+
 type BlogRepo struct {
+	DB *pgx.Conn
+}
+
+type UserRepo struct {
 	DB *pgx.Conn
 }
 
 func NewBlogRepository(db *pgx.Conn) BlogRepository {
 	return &BlogRepo{
+		DB: db,
+	}
+}
+
+func NewUserRepository(db *pgx.Conn) UserRepository {
+	return &UserRepo{
 		DB: db,
 	}
 }
@@ -117,4 +136,70 @@ func (r *BlogRepo) DeleteBlog(id int) error {
 	)
 
 	return err
+}
+
+func (r *UserRepo) CreateUser(user model.User) (model.User, error) {
+	query := `
+	INSERT INTO users(name, email, password, role)
+	VALUES($1, $2, $3, $4)
+	RETURNING id, name, email, role
+	`
+
+	var createdUser model.User
+	err := r.DB.QueryRow(
+		context.Background(),
+		query,
+		user.Name,
+		user.Email,
+		user.Password,
+		user.Role,
+	).Scan(
+		&createdUser.ID,
+		&createdUser.Name,
+		&createdUser.Email,
+		&createdUser.Role,
+	)
+	if err != nil {
+		return model.User{}, err
+	}
+
+	return createdUser, nil
+}
+
+func (r *UserRepo) GetUserByEmail(email string) (model.User, error) {
+	query := `
+	SELECT id, name, email, password, role
+	FROM users
+	WHERE email=$1
+	`
+
+	var user model.User
+	err := r.DB.QueryRow(
+		context.Background(),
+		query,
+		email,
+	).Scan(
+		&user.ID,
+		&user.Name,
+		&user.Email,
+		&user.Password,
+		&user.Role,
+	)
+	if err != nil {
+		if errors.Is(err, pgx.ErrNoRows) {
+			return model.User{}, ErrUserNotFound
+		}
+		return model.User{}, err
+	}
+
+	return user, nil
+}
+
+func IsUniqueViolation(err error) bool {
+	var pgErr *pgconn.PgError
+	if !errors.As(err, &pgErr) {
+		return false
+	}
+
+	return pgErr.Code == "23505"
 }

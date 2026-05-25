@@ -14,6 +14,7 @@ type Config struct {
 	DBPassword string
 	DBHost     string
 	DBPort     string
+	JWTSecret  string
 }
 
 func LoadConfig() (Config, error) {
@@ -29,6 +30,7 @@ func LoadConfig() (Config, error) {
 		DBPassword: os.Getenv("DB_PASSWORD"),
 		DBHost:     os.Getenv("DB_HOST"),
 		DBPort:     os.Getenv("DB_PORT"),
+		JWTSecret:  os.Getenv("JWT_SECRET"),
 	}
 
 	if cfg.Port == "" {
@@ -36,6 +38,9 @@ func LoadConfig() (Config, error) {
 	}
 	if cfg.DBUser == "" || cfg.DBName == "" || cfg.DBPassword == "" || cfg.DBHost == "" || cfg.DBPort == "" {
 		return Config{}, fmt.Errorf("missing required database configuration")
+	}
+	if cfg.JWTSecret == "" {
+		return Config{}, fmt.Errorf("missing JWT_SECRET")
 	}
 
 	return cfg, nil
