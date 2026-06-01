@@ -5,6 +5,7 @@ import (
 	"blog/internal/repository"
 	"blog/internal/routes"
 	"blog/internal/service"
+	"blog/pkg/cache"
 	"blog/pkg/config"
 	"blog/pkg/db"
 	"context"
@@ -25,17 +26,24 @@ func main() {
 	}
 	defer db.Close(context.Background())
 
+	redisClient, err := cache.LoadRedis(cfg)
+	if err != nil {
+		log.Fatalf("connect redis: %v", err)
+	}
+	defer redisClient.Close()
+
 	blogRepo := repository.NewBlogRepository(db)
-	userRepo := repository.NewUserRepository(db)
 	blogService := service.NewBlogService(blogRepo)
-	userService := service.NewUserService(userRepo, cfg.JWTSecret)
 	blogHandler := handler.NewBlogHandler(blogService)
+
+	userRepo := repository.NewUserRepository(db)
+	userService := service.NewUserService(userRepo, cfg.JWTSecret)
 	userHandler := handler.NewUserHandler(userService)
-	routes.Routes(blogHandler, userHandler, cfg.JWTSecret)
+	router := routes.New(blogHandler, userHandler, cfg.JWTSecret)
 
 	addr := ":" + cfg.Port
 	fmt.Printf("Server running on %s\n", addr)
-	if err := http.ListenAndServe(addr, nil); err != nil {
+	if err := http.ListenAndServe(addr, router); err != nil {
 		log.Fatalf("start server: %v", err)
 	}
 }
